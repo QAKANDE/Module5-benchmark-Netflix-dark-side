@@ -21,4 +21,13 @@ routes.get("/getfromomdb" , async (req,res,next)=>{
        console.log(error) 
     }
 })
+routes.get("/getfromomdb/:omdbID" , async (req,res,next)=>{
+    try {
+        const title = req.query
+        const request = await axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=809d53f5&t=${req.params.omdbID}`)
+        res.send(request.data)
+    } catch (error) {
+       console.log(error) 
+    }
+})
 module.exports = routes
